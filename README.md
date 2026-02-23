@@ -13,33 +13,18 @@ STEP 1: Prerequisites
 --------------------------------------------------------------------
 Before starting, ensure you have the following installed on your computer:
 1. GAMS 
-2. GAMS MIRO 
-3. A valid GAMS license configured on your machine
-4. Python 3.10 or higher
+2. GAMS MIRO
+3. GAMSPy
+4. A valid GAMS license configured on your machine
+5. Python 3.10 or higher
+
+For the GAMSPy installation follow the information on the official website: 
+https://gamspy.readthedocs.io/en/latest/user/installation.html
+
+After installing everything -> Step 2
 
 --------------------------------------------------------------------
-STEP 2: Setup the Python Environment
---------------------------------------------------------------------
-You need to create an isolated Python environment and install the 
-required packages listed in the 'requirements.txt' file.
-
-Open your Terminal (Mac) or Command Prompt (Windows) and run 
-the following commands:
-
-# 1. Create a virtual environment named 'miro_env'
-python -m venv miro_env
-
-# 2. Activate the environment
-  -> On Mac:
-     source miro_env/bin/activate
-  -> On Windows:
-     miro_env\Scripts\activate
-
-# 3. Install the required packages
-pip install -r requirements.txt
-
---------------------------------------------------------------------
-STEP 3: Link MIRO to the Environment
+STEP 2: Link MIRO to the Environment
 --------------------------------------------------------------------
 Finally, tell the GAMS MIRO application to use this specific Python 
 environment when solving the model.
