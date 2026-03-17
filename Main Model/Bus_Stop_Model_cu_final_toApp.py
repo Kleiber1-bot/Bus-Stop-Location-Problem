@@ -154,21 +154,10 @@ objective[...] = ObjVal == (
 MCLP = Model(m, name="MCLP", equations=[objective, assign_limit, open_cond, range_cond, num_stops, min_cov_eq], 
              problem="MIP", sense=Sense.MAX, objective=ObjVal)
 
-
-# 6. OPTIMIZATION LOOP (Marginal Gain Calculation)
-
 user_p = p.toValue()
-
-
-#Step A: Solve for p + 1
-#print(f"\n--- CALCULATING MARGINAL BENEFIT (Testing p={int(user_p + 1)}) ---")
-#p_calc.setRecords(user_p + 1)
-#MCLP.solve(output=sys.stdout)
-#served_plus_one = Sum([i, j], c[i] * Y.l[i, j]).toValue()
 
 ##### Solving the Model#####
 print(f"\n--- CALCULATING FINAL RESULT (Restoring p={int(user_p)}) ---")
-p_calc.setRecords(user_p)
 MCLP.solve(output=sys.stdout)
 
 print("############ Objective Value MCLP ############")
@@ -184,8 +173,6 @@ num_built_stops = Parameter(m, name="num_built_stops", description="Number of St
 avg_walking_dist = Parameter(m, name="avg_walking_dist", description="Avg Walking Dist (m)", is_miro_output=True)
 total_cost_Bus_stops_used = Parameter(m, name="total_cost_Bus_stops_used", description="Total costs for Bus Stops used", is_miro_output=True)
 cost_per_stop_value = Parameter(m, name="cost_per_stop_value", description="Cost per Bus Stop", is_miro_output=True)   
-#marginal_cost_bus_stops = Parameter(m, name="marginal_cost_bus_stops", description="Marginal Cost per Additional Bus Stop", is_miro_output=True)
-#min_stops_needed_msg = Parameter(m, name="min_stops_needed_msg", description="validation_result", is_miro_output=True)
 
 num_built_stops[...] = Sum(j, X.l[j])
 total_demand[...] = Sum(i, c[i])
@@ -195,7 +182,6 @@ coverage_pct[...] = (served_demand / total_demand) * 100
 total_walk_dist = Sum([i, j], d[i, j] * Y.l[i, j] * c[i])
 cost_per_stop_value[...] = cost_per_stop.toValue()
 total_cost_Bus_stops_used[...] = num_built_stops * cost_per_stop.toValue()*2
-#marginal_cost_bus_stops[...] = 120000  # Fixed cost per additional bus stop (2 Busstops have to be built)
 
 served_val = served_demand.toValue()
 dist_val = total_walk_dist.toValue()
@@ -252,7 +238,6 @@ map_data_filtered = Parameter(m,
 map_data_filtered[j, "lat"].where[is_built] = lat[j]
 map_data_filtered[j, "lon"].where[is_built] = lon[j]
 map_data_filtered[j, "status"].where[is_built] = 1
-from gamspy.math import Round
 map_data_filtered[j, "served"].where[is_built] = Round(stop_coverage[j], 1)
 
-print(f"\nAbdeckung: {coverage_pct.toValue():.2f}%")
+print(f"\nCoverage: {coverage_pct.toValue():.2f}%")
