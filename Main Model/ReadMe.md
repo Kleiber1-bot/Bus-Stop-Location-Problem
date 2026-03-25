@@ -1,28 +1,10 @@
 # User Manual: Bus Stop Location Optimization Tool
 
 Welcome to the **Bus Stop Location Optimization Tool**. This interactive dashboard allows urban planners and decision-makers to design efficient public transport networks by balancing financial costs with public accessibility. 
-
-Follow these three steps to use the tool effectively:
-
 ![Bus Stop Location Optimization Tool](Bus-Stop-Location-Optimization-Tool_page-0001.jpg)
-
-*Figure 1. Landing page of the Bus Stop Location Optimization Tool.*
 ---
 
-## 1. Configure Your Inputs
-The tool provides flexible parameters so you can customize the optimization model to fit specific municipal needs and budgets. 
-
-* **Weighting Factor (Alpha):** Use the slider to balance the two competing objectives. A higher value prioritizes the **Benefit for Society** (maximizing coverage and minimizing walking distance), while a lower value prioritizes **Profit/Cost Efficiency** (minimizing the number of built stops).
-* **Max Walking Distance:** Set the maximum acceptable distance (in meters) a citizen should have to walk to reach a bus stop. 
-* **Max Bus Stops:** Set a strict upper limit on how many bus stops can be built, acting as your budget constraint.
-* **Minimum Coverage Percentage:** Guarantee a baseline service level by forcing the model to cover at least this percentage of the total population. 
-* **Fixed Cost per Bus Stop:** Input the financial cost of building a single stop to calculate total network investments.
-
-> **💡 Pro-Tip: Switch from MCLP to LSCP**
-> By default, the tool solves a Maximal Covering Location Problem (MCLP) to maximize coverage within your budget. However, you can easily switch the tool to solve a Location Set Covering Problem (LSCP)—which finds the absolute minimum cost required to serve the entire city. 
-> 
-> *To do this: Set the **Minimum Coverage Percentage to 100%** and the **Weighting Factor (Alpha) to 0**.*
-
+![Bus Stop Location Optimization Tool2](Bus-Stop-Location-Optimization-Tool_page-0002.jpg)
 ---
 
 ## 2. Analyze the Results
