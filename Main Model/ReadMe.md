@@ -4,6 +4,7 @@ Welcome to the **Bus Stop Location Optimization Tool**. This interactive dashboa
 
 Follow these three steps to use the tool effectively:
 
+![Bus Stop Location Optimization Tool](Bus-Stop-Location-Optimization-Tool_page-0001.jpg)
 ---
 
 ## 1. Configure Your Inputs
